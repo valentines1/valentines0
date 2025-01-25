@@ -87,11 +87,11 @@
           Yes, please! 🥰
         </button>
         <button
-          onclick="showQuestion(3)"
-          class="bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded-full text-lg font-semibold transition-transform transform hover:scale-110"
-        >
-          Maybe later... 😅
-        </button>
+  onclick="showQuestion(3)"
+  class="bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded-full text-lg font-semibold transition-transform transform hover:scale-110"
+>
+  Maybe later... 😅
+</button>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@
           Absolutely! 💖
         </button>
         <button
-          onclick="showFinal(false)"
+          onclick="showRoast()"
           class="bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded-full text-lg font-semibold transition-transform transform hover:scale-110"
         >
           Let me think 🤔
@@ -159,6 +159,75 @@
   <!-- JavaScript -->
   <script>
     let userName = ''; // Global variable to store the name
+
+
+    const roasts = [
+  "Oh, playing hard to get? Classic. 😉",
+  "Don't worry, your charm is still loading... 🌀",
+  "I'll wait, but remember, the clock is ticking. ⏳",
+  "Are you practicing for a role in 'The Indecisive'? 🤔",
+  "Even my grandma decides faster than this. 😏",
+  "Take your time... but not too much, okay? 😅",
+  "If hesitation was an Olympic sport, you'd take gold. 🏅",
+  "Wow, a real-life procrastination master. Impressive. 😌",
+  "At this rate, I’ll finish a Netflix series before you decide. 📺",
+  "You’re like my WiFi—always connected but never responding. 📶",
+  "I’ll alert the tortoise; we’ve got competition. 🐢",
+  "Should I get you a coin to flip? Heads or tails? 🪙",
+  "Waiting for you is like watching paint dry. 🎨",
+  "I’m here for the long haul. Got snacks? 🍿",
+  "Oh no, take your time. I’m only aging over here. 👵",
+  "Your middle name must be 'Maybe.' 😜",
+  "Do you need a sign? Or maybe a billboard? 🪧",
+  "If thinking was a marathon, you’d still be at the starting line. 🏁",
+  "You must be overthinking this, like it’s rocket science. 🚀",
+  "Your decision-making skills could use a software update. 💻",
+  "Did you get lost in your own thoughts? Need a map? 🗺️",
+  "I didn’t realize saying ‘yes’ was this complicated. 🤷",
+  "Even Siri could answer faster than you. 📱",
+  "Let me know if you need a pro/con list. 📝",
+  "Wow, I didn’t realize I signed up for a waiting game. 🕒",
+  "Do you want me to ask the Magic 8-Ball for you? 🎱",
+  "You’re thinking about it so hard, I can hear the gears turning. ⚙️",
+  "Are you buffering? Or just stuck? 🌀",
+  "Should I set a reminder for next year? 📆",
+  "Don’t worry, the dinosaurs took their time too. 🦖",
+  "Are you practicing for a dramatic pause? 🎭",
+  "This decision seems harder than parallel parking. 🚗",
+  "No rush, it’s not like this is life or death... oh wait. 😂",
+  "Let me know if you’d like a second opinion. 🩺",
+  "I think even a sloth is getting impatient watching this. 🦥",
+  "Maybe you need a motivational speech to decide? 🎤",
+  "Oh, I see! You’re waiting for divine intervention. ✨",
+  "Your hesitation is a work of art—abstract and endless. 🖼️",
+  "You’re moving slower than Monday morning. 🌅",
+  "At this rate, I might as well write a book about it. 📚"
+];
+
+
+function showRoast() {
+  const roast = roasts[Math.floor(Math.random() * roasts.length)]; // Pick a random roast
+  const roastDiv = document.createElement("div");
+  
+  roastDiv.className = "fixed inset-0 flex items-center justify-center bg-black/60 z-50";
+  roastDiv.innerHTML = `
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center max-w-md">
+      <p class="text-pink-600 text-lg font-bold mb-4">${roast}</p>
+      <button onclick="closeRoast()" class="bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-lg">
+  Okay, got it! 😂
+</button>
+
+    </div>
+  `;
+  
+  document.body.appendChild(roastDiv);
+}
+
+function closeRoast() {
+  location.reload(); // Refreshes the page
+}
+
+
 
 function setName() {
   const name = document.getElementById('name-input').value.trim();
