@@ -24,7 +24,19 @@
 <body class="bg-pink-100 flex flex-col items-center justify-center min-h-screen" style="background-image: url('https://www.transparenttextures.com/patterns/heart-pattern.png'); background-size: cover;">
   <!-- Add Name UI -->
 
-  <p id="countdown" class="text-xl font-semibold text-pink-600 mb-6"></p>
+  <div class="relative flex items-center mb-4 mt-4 justify-center">
+    <div class="absolute -top-6 left-6 text-pink-600 text-4xl animate-bounce">❤️</div>
+    <div class="absolute -top-6 right-6 text-pink-600 text-4xl animate-bounce">💖</div>
+    <div class="absolute -bottom-6 left-6 text-pink-600 text-4xl animate-bounce">🌹</div>
+    <div class="absolute -bottom-6 right-6 text-pink-600 text-4xl animate-bounce">✨</div>
+    <p
+      id="countdown"
+      class="text-3xl font-extrabold text-white bg-gradient-to-r from-pink-500 via-red-500 to-purple-500 px-6 py-4 rounded-xl shadow-2xl border-4 border-pink-600 mb-6 animate-pulse"
+    >
+      ⏳ Countdown: 10d 12h 34m 56s ⏳
+    </p>
+  </div>
+  
 
   <div id="name-prompt" class="step-section text-center space-y-6 visible">
     <h1 class="text-4xl font-bold text-pink-600">Welcome!</h1>
@@ -163,7 +175,7 @@
 
   <footer class="bg-pink-200 text-center w-full mt-14 py-4">
     <p class="text-gray-700 text-sm">
-      Developed with 💖 by <span class="font-semibold text-pink-600">Joseph Mbuzi</span>
+      Developed with 💖 by <span class="font-semibold text-pink-600"> <a href="https://josephmbuzi.com/">Joseph Mbuzi</a></span>
     </p>
     <p class="text-gray-500 text-xs">
       Version 1.0.0
@@ -319,15 +331,13 @@ function submitPhoneNumber() {
 
 function shareToWhatsApp() {
   const shareText = `
-🌟 Will You Be My Valentine? 🌟
-
 Hey there! 💖
 
 I just said YES to the cutest Valentine proposal on this amazing website! 😍
 It was such a fun experience, and it made my day brighter. 🌹✨
 
 Check it out and make someone's day special too:  
-👉 https://example.com/valentine  
+👉 https://valentines1.github.io/valentines0/ 
 
 ❤️ Spread the love this Valentine's! ❤️
   `;
