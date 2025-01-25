@@ -144,17 +144,16 @@
           Submit
         </button>
       </div>
+
+      <button
+      id="whatsapp-share-button"
+      onclick="shareToWhatsApp()"
+      class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 mt-4 rounded-lg hidden"
+    >
+      Share to WhatsApp 💚
+    </button>
     </div>
   </div>
-
-  <button
-  onclick="shareToWhatsApp()"
-  class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 mt-2 rounded-lg"
->
-  Share to WhatsApp 💚
-</button>
-
-
   
   
   <div id="final-no" class="step-section hidden text-center space-y-6">
@@ -249,15 +248,6 @@ function closeRoast() {
   location.reload(); // Refreshes the page
 }
 
-function shareToWhatsApp() {
-  const shareText = `I just said yes to the cutest Valentine proposal on this amazing site! ❤️`;
-  const encodedText = encodeURIComponent(shareText);
-  const whatsappURL = `https://wa.me/?text=${encodedText}`;
-  window.open(whatsappURL, '_blank');
-}
-
-
-
 function updateCountdown() {
   const now = new Date();
   const valentine = new Date(now.getFullYear(), 1, 14); // Feb 14
@@ -317,12 +307,35 @@ function submitPhoneNumber() {
     .then(() => {
       alert('Thank you! Your information has been submitted.');
       document.getElementById('phone-number').value = ''; // Clear phone number input
+      // Show WhatsApp share button
+      const shareButton = document.getElementById('whatsapp-share-button');
+      shareButton.classList.remove('hidden');
     })
     .catch(error => {
       alert('An error occurred while submitting your information.');
       console.error('Error:', error);
     });
 }
+
+function shareToWhatsApp() {
+  const shareText = `
+🌟 *Will You Be My Valentine?* 🌟
+
+Hey there! 💖
+
+I just said *YES* to the cutest Valentine proposal on this amazing website! 😍  
+It was such a fun experience, and it made my day brighter. 🌹✨
+
+Check it out and make someone's day special too:  
+👉 [Insert your link here]  
+
+❤️ Spread the love this Valentine's! ❤️  
+  `;
+  const encodedText = encodeURIComponent(shareText);
+  const whatsappURL = `https://wa.me/?text=${encodedText}`;
+  window.open(whatsappURL, '_blank');
+}
+
 
 function showQuestion(step) {
   showSection(`question-${step}`);
