@@ -319,22 +319,31 @@ function submitPhoneNumber() {
 
 function shareToWhatsApp() {
   const shareText = `
-🌟 *Will You Be My Valentine?* 🌟
+🌟 Will You Be My Valentine? 🌟
 
 Hey there! 💖
 
-I just said *YES* to the cutest Valentine proposal on this amazing website! 😍  
+I just said YES to the cutest Valentine proposal on this amazing website! 😍
 It was such a fun experience, and it made my day brighter. 🌹✨
 
 Check it out and make someone's day special too:  
-👉 [Insert your link here]  
+👉 https://example.com/valentine  
 
-❤️ Spread the love this Valentine's! ❤️  
+❤️ Spread the love this Valentine's! ❤️
   `;
-  const encodedText = encodeURIComponent(shareText);
+
+  // Remove unsupported formatting for status
+  const statusText = shareText
+    .replace(/\*/g, '') // Remove asterisks for bold
+    .replace(/_/g, '') // Remove underscores for italics
+    .trim();
+
+  // Encode text for WhatsApp
+  const encodedText = encodeURIComponent(statusText);
   const whatsappURL = `https://wa.me/?text=${encodedText}`;
   window.open(whatsappURL, '_blank');
 }
+
 
 
 function showQuestion(step) {
