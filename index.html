@@ -23,9 +23,12 @@
 </head>
 <body class="bg-pink-100 flex flex-col items-center justify-center min-h-screen" style="background-image: url('https://www.transparenttextures.com/patterns/heart-pattern.png'); background-size: cover;">
   <!-- Add Name UI -->
+
+  <p id="countdown" class="text-xl font-semibold text-pink-600 mb-6"></p>
+
   <div id="name-prompt" class="step-section text-center space-y-6 visible">
     <h1 class="text-4xl font-bold text-pink-600">Welcome!</h1>
-    <p class="text-xl text-gray-700">What's your Valentine’s name?</p>
+    <p class="text-xl text-gray-700">What's your name?</p>
     <input
       type="text"
       id="name-input"
@@ -143,6 +146,15 @@
       </div>
     </div>
   </div>
+
+  <button
+  onclick="shareToWhatsApp()"
+  class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 mt-2 rounded-lg"
+>
+  Share to WhatsApp 💚
+</button>
+
+
   
   
   <div id="final-no" class="step-section hidden text-center space-y-6">
@@ -154,11 +166,21 @@
     <p class="text-gray-700 text-sm">
       Developed with 💖 by <span class="font-semibold text-pink-600">Joseph Mbuzi</span>
     </p>
-  </footer>
+    <p class="text-gray-500 text-xs">
+      Version 1.0.0
+    </p>
+</footer>
+
   
   <!-- JavaScript -->
   <script>
     let userName = ''; // Global variable to store the name
+
+    function personalizedRoast() {
+  const roast = roasts[Math.floor(Math.random() * roasts.length)];
+  return roast.replace('[name]', userName || 'Friend'); // Replace [name] placeholder
+}
+
 
 
     const roasts = [
@@ -226,6 +248,36 @@ function showRoast() {
 function closeRoast() {
   location.reload(); // Refreshes the page
 }
+
+function shareToWhatsApp() {
+  const shareText = `I just said yes to the cutest Valentine proposal on this amazing site! ❤️`;
+  const encodedText = encodeURIComponent(shareText);
+  const whatsappURL = `https://wa.me/?text=${encodedText}`;
+  window.open(whatsappURL, '_blank');
+}
+
+
+
+function updateCountdown() {
+  const now = new Date();
+  const valentine = new Date(now.getFullYear(), 1, 14); // Feb 14
+  const diff = valentine - now;
+
+  if (diff < 0) {
+    document.getElementById('countdown').textContent = 'Happy Valentine’s Day! 🎉';
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+setInterval(updateCountdown, 1000);
+
 
 
 
